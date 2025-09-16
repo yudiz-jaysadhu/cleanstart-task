@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Static Site</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1 { color: #333; }
+        a { 
+            color: #007bff; 
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        // Get current host and build links dynamically
+        const currentHost = window.location.hostname;
+        
+        window.onload = function() {
+            document.getElementById('flask-link').href = `http://${currentHost}:5000`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Static Website</h1>
+        <p>This is served by Nginx in a Docker container</p>
+        <p>Port: 8080</p>
+        
+        <div>
+            <a id="flask-link" href="#">Flask App</a>
+            <a href="/">Refresh Page</a>
+        </div>
+        
+        <h3>Docker Services Running:</h3>
+        <ul style="text-align: left;">
+            <li>Flask App (Python)</li>
+            <li>Nginx (Static Files)</li>
+            <li>Redis (Cache)</li>
+        </ul>
+    </div>
+</body>
+</html>

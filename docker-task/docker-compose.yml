@@ -1,0 +1,23 @@
+
+services:
+  # Flask web app
+  flask-app:
+    build: ./flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  # Nginx static server
+  nginx-static:
+    build: ./nginx-static
+    ports:
+      - "8080:80"
+
+  # Redis cache
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
